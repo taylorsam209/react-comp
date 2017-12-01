@@ -3,7 +3,7 @@ import './Browse.css';
 import Nav from '../Nav/Nav';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import {getBook} from '../../ducks/reducer';
+import {getBook, clearBook} from '../../ducks/reducer';
 import {connect} from 'react-redux';
 
 class Browse extends Component {
@@ -37,7 +37,11 @@ class Browse extends Component {
                             <h1>{e.title}</h1>
                             <p>by {e.author}</p>
                             <Link to={`/details/${e.book_id}`}>
-                            <div className='details-button' onClick={()=>{this.props.getBook(e.book_id)}}>Details</div>
+                            <div className='details-button' onClick={()=>{
+                                if(this.props.currentBook.book_id !== e.book_id){
+                                    this.props.clearBook()
+                                }
+                                this.props.getBook(e.book_id)}}>Details</div>
                             </Link>
                             </div>
                         </div>
@@ -49,4 +53,10 @@ class Browse extends Component {
     }
 }
 
-export default connect(null, {getBook})(Browse);
+function mapStateToProps(state) {
+    return { 
+    currentBook: state.currentBook
+    }
+}
+
+export default connect(mapStateToProps, {getBook, clearBook})(Browse);

@@ -4,6 +4,7 @@ import { HashRouter, Route, Switch } from "react-router-dom";
 import Login from './components/Login/Login';
 import Browse from './components/Browse/Browse';
 import Details from './components/Details/Details';
+import Cart from './components/Cart/Cart';
 import Shelf from './components/Shelf/Shelf';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
       <Route component={Login} path='/' exact />
       <Route component={Browse} path='/browse' />
       <Route component={Details} path='/details' />
+      <Route component={Cart} path='/cart' />
       <Route component={Shelf} path='/shelf' />
       </Switch>
       </div>

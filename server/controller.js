@@ -9,5 +9,16 @@ module.exports = {
             res.status(200).send(books)
         })
         .catch(()=> res.status(500).send("Cannot get books"))
+    },
+
+    getBook: (req, res) => {
+        const db = req.app.get('db')
+        const id = req.params.id;
+
+        db.get_book(id)
+        .then(book => {
+            res.status(200).send(book[0])
+        })
+        .catch(()=> res.status(500).send('Cannot Locate Book'))
     }
 }

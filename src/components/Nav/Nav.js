@@ -22,7 +22,7 @@ class Nav extends Component {
                 <div className="header-parent">
                     <div className="header-child-left">
                         <Link to="/browse" className="logo-container" >Browse</Link>
-                            <Link className="logo-container" to="/details"> Details </Link>
+                            <Link className="logo-container" to="/cart"> Cart </Link>
                             <Link className="logo-container" to="/shelf"> My Shelf </Link>
 
                     </div>

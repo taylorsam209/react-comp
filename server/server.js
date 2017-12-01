@@ -5,7 +5,8 @@ const express = require("express"),
     massive = require("massive"),
     passport = require("passport"),
     Auth0Strategy = require("passport-auth0"),
-    cors = require("cors")
+    cors = require("cors"),
+    cc = require('./controller')
 
     const PORT = 3010;
     const app = express();
@@ -81,6 +82,7 @@ const express = require("express"),
             })
     })
     
+    app.get('/api/books', cc.getBooks)
     
     
     

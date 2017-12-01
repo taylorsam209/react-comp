@@ -83,6 +83,7 @@ const express = require("express"),
     })
     
     app.get('/api/books', cc.getBooks)
+    app.get('/api/book/:id', cc.getBook)
     
     
     

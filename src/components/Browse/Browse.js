@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import './Browse.css';
 import Nav from '../Nav/Nav';
 import axios from 'axios'
+import {Link} from 'react-router-dom'
+import {getBook} from '../../ducks/reducer';
+import {connect} from 'react-redux';
 
 class Browse extends Component {
     constructor() {
@@ -33,6 +36,9 @@ class Browse extends Component {
                         <img align='left' className='photo-container' src={e.image} alt='' />
                             <h1>{e.title}</h1>
                             <p>by {e.author}</p>
+                            <Link to={`/details/${e.book_id}`}>
+                            <div className='details-button' onClick={()=>{this.props.getBook(e.book_id)}}>Details</div>
+                            </Link>
                             </div>
                         </div>
                     )
@@ -43,4 +49,4 @@ class Browse extends Component {
     }
 }
 
-export default Browse;
+export default connect(null, {getBook})(Browse);
